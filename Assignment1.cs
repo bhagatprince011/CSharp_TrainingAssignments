@@ -1,11 +1,11 @@
-﻿using AssignmentLibrary;
+using AssignmentLibrary;
 using System;
 
 class Assignment1
 {
     static void findCube()
     {
-        Console.WriteLine(" Please enter no. to find its Cube: ");
+        Console.WriteLine("Please enter no. to find its Cube: ");
         int number = int.Parse(Console.ReadLine());
         Console.WriteLine("The Cube of {0} is {1}",number,Helper.cubeOf(number));
 
@@ -13,15 +13,23 @@ class Assignment1
 
     static void displayTable()
     {
-        Console.WriteLine(" Please enter number upto which you want to display table: ");
+        Console.WriteLine("Please enter number upto which you want to display table: ");
         int number = int.Parse(Console.ReadLine());
-        Helper.ShowTable(number);
+        if (number <=10) 
+        { 
+            Helper.ShowTable(number); 
+        }
+        else { 
+            Console.WriteLine("\nThat will be too long. Below displayed till 10th.\n");
+            Helper.ShowTable(10); 
+        }
+        
 
     }
 
     static void eligibleToVote()
     {
-        Console.WriteLine(" Please Enter your age to know if you're eligible to cast vote or not: ");
+        Console.WriteLine("Please Enter your age to know if you're eligible to cast vote or not: ");
         int age = int.Parse(Console.ReadLine());
         bool isEligible = Helper.isEligibleForVote(age);
 
@@ -31,17 +39,18 @@ class Assignment1
 
     static void eligibleForAdmission()
     {
-        Console.WriteLine(" Please Enter your Maths Score: ");
+        Console.WriteLine("Please Enter your Maths Score: ");
         float mathScore = float.Parse(Console.ReadLine());
-        Console.WriteLine(" Please Enter your Physics Score: ");
+
+        Console.WriteLine("Please Enter your Physics Score: ");
         float phyScore = float.Parse(Console.ReadLine());
-        Console.WriteLine(" Please Enter your Chemistry Score: ");
+        Console.WriteLine("Please Enter your Chemistry Score: ");
         float chemScore = float.Parse(Console.ReadLine());
 
         bool isEligible =Helper.isEligibleForAdmission(mathScore, phyScore, chemScore);
 
         if(isEligible) { Console.WriteLine(" Hurray!, You can take admission..."); }
-        else { Console.WriteLine("sorry!, Better Luck next time..."); }
+        else { Console.WriteLine(" sorry!, Better Luck next time..."); }
     }
 
     static void switchCases(int choice)
@@ -65,7 +74,7 @@ class Assignment1
                 break;
 
             case 5:
-                Console.WriteLine(" See you Next Time...");
+                Console.WriteLine("\tSee you Next Time...");
                 Environment.Exit(0);
                 break;
 
@@ -78,7 +87,7 @@ class Assignment1
     }
     static void displayMenu()
     {
-        Console.WriteLine(" 1. Find Cube: ");
+        Console.WriteLine("\n 1. Find Cube: ");
         Console.WriteLine(" 2. Display Multiplication-Table. ");
         Console.WriteLine(" 3. Eligible to Cast Vote? ");
         Console.WriteLine(" 4. Eligible for Admission? ");
