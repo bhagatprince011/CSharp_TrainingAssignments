@@ -6,35 +6,83 @@ class Assignment1
     static void findCube()
     {
         Console.WriteLine("Please enter no. to find its Cube: ");
-        int number = int.Parse(Console.ReadLine());
-        Console.WriteLine("The Cube of {0} is {1}",number,Helper.cubeOf(number));
+
+        string choice = Console.ReadLine();
+        int number;
+        bool isConversionSuccessful = int.TryParse(choice, out number);
+        if( isConversionSuccessful)
+        {
+            Console.WriteLine("The Cube of {0} is {1}", number, Helper.cubeOf(number));
+        }
+        else
+        {
+            Console.WriteLine("Please Type Only Integer Value.");
+            switchCases(1);
+
+        }
+
 
     }
 
     static void displayTable()
     {
         Console.WriteLine("Please enter number upto which you want to display table: ");
-        int number = int.Parse(Console.ReadLine());
-        if (number <=10) 
-        { 
-            Helper.ShowTable(number); 
+
+        string choice = Console.ReadLine();
+        int numbers;
+        bool isConversionSuccessful = int.TryParse(choice, out numbers);
+        if (isConversionSuccessful )
+        {
+            if (choice.Length >= 3)
+            {
+                Console.WriteLine("\nThat will be too long. Below displayed till 10th.\n");
+                Helper.ShowTable(10);
+            }
+            else
+            {
+                int number;
+                if (int.TryParse(choice, out number))
+                {
+                    if (number <= 10) { Helper.ShowTable(number); }
+                    else
+                    {
+                        Console.WriteLine("\nThat will be too long. Below displayed till 10th.\n");
+                        Helper.ShowTable(10);
+                    }
+                }
+            }
         }
-        else { 
-            Console.WriteLine("\nThat will be too long. Below displayed till 10th.\n");
-            Helper.ShowTable(10); 
+        else
+        {
+            Console.WriteLine("Please Type Only Integer Value.");
+            switchCases(2);
+
         }
-        
 
     }
 
     static void eligibleToVote()
     {
         Console.WriteLine("Please Enter your age to know if you're eligible to cast vote or not: ");
-        int age = int.Parse(Console.ReadLine());
-        bool isEligible = Helper.isEligibleForVote(age);
 
-        if(isEligible) { Console.WriteLine(" Congratulations! you're eligible..."); }
-        else { Console.WriteLine(" Sorry, you're cannot cast vote..."); }
+        
+        string choice = Console.ReadLine();
+        int age;
+        bool isConversionSuccessful = int.TryParse(choice, out age);
+        if (isConversionSuccessful )
+        {
+            bool isEligible = Helper.isEligibleForVote(age);
+            if (isEligible) { Console.WriteLine(" Congratulations! you're eligible..."); }
+            else { Console.WriteLine(" Sorry, you're cannot cast vote..."); }
+        }
+        else
+        {
+            Console.WriteLine("Age only consists of Integer .");
+            switchCases(3);
+
+        }
+
+        
     }
 
     static void eligibleForAdmission()
@@ -121,8 +169,7 @@ class Assignment1
 
     public static void Main(String[] args)
     {
-        displayMenu();      
-
+        displayMenu();   
         
     }
 }
